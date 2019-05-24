@@ -1,6 +1,6 @@
 from flask import request, current_app
 from flask_restful import Resource, abort
-from app import api
+from mailtester import api
 import scraper
 
 
