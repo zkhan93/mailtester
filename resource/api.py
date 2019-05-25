@@ -21,9 +21,11 @@ class Fetch(Resource):
             domain = item.get('domain')
             first = item.get('first')
             last = item.get('last')
-            email_pattern = hunterio.fetch_email_pattern(domain)
-            if email_pattern:
-                res['email_pattern'] = email_pattern
+            email_pattern = item.get('pattern')
+            if not email_pattern:
+                email_pattern = hunterio.fetch_email_pattern(domain)
+                if email_pattern:
+                    res['email_pattern'] = email_pattern
             email = hunterio.fetch_email(domain, first, last)
             if email:
                 res['email'] = email

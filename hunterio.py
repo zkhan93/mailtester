@@ -7,6 +7,8 @@ random.seed()
 base_url = 'https://api.hunter.io/v2/'
 
 def fetch_email_pattern(domain):
+    if not domain:
+        return None
     url = f"{base_url}domain-search"
     json_content = _fetch_json(url, domain=domain)
     if json_content:
@@ -17,6 +19,8 @@ def fetch_email_pattern(domain):
             return f"{pattern}@{domain}"
 
 def fetch_email(domain, first, last):
+    if not any([domain, first, last]):
+        return None
     url = f"{base_url}email-finder"
     json_content = _fetch_json(url, domain=domain, first_name=first, last_name=last)
     if json_content:
