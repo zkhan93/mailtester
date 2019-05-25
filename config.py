@@ -1,5 +1,7 @@
 import os
+import random
 
+random.seed()
 
 class Config(object):
 
@@ -9,4 +11,6 @@ class Config(object):
 
     @property
     def HUNTER_API_KEYS(self):
-        return os.getenv('HUNTER_API_KEYS').split()
+        apis = os.getenv('HUNTER_API_KEYS').split()
+        random.shuffle(apis)
+        return apis

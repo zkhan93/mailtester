@@ -1,3 +1,4 @@
 .env
 .vscode/
-test_content.py
+test_content.py\
+__pycache__/
