@@ -10,7 +10,11 @@ def fetch_email_pattern(domain):
     url = f"{base_url}domain-search"
     json_content = _fetch_json(url, domain=domain)
     if json_content:
-        return json_content.get('data', {}).get('pattern')
+        data = json_content.get('data', {}) 
+        pattern = data.get('pattern')
+        domain = data.get('domain')
+        if pattern:
+            return f"{pattern}@{domain}"
 
 def fetch_email(domain, first, last):
     url = f"{base_url}email-finder"
